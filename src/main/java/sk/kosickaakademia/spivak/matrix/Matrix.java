@@ -116,6 +116,12 @@ public class Matrix {
      */
     public int determinantNxNMatrix (int matrix[][]){
         if(matrix.length == matrix[0].length){
+            if(matrix.length == 2){
+                return determinant2x2Matrix(matrix);
+            }
+            if(matrix.length == 3){
+                return determinant3x3Matrix(matrix);
+            }
             int a = matrix.length;
             int result = 0;
             int coefficient = 1;
