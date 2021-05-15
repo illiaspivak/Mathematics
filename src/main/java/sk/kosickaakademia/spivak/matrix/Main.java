@@ -12,7 +12,8 @@ public class Main
         int[][] matrix4 = new int[][]{ {2,5,9,8},{8,9,-5,2},{1,8,7,9},{-2,4,0,7} };
 
         matrix.printMatrix(matrix4);
-        matrix.determinant4x4Matrix(matrix4);
+        System.out.println(matrix4[0][3]);
+        System.out.println(matrix.determinant4x4Matrix(matrix4));
 
 
 

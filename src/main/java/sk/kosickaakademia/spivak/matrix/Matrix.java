@@ -80,15 +80,25 @@ public class Matrix {
     public int determinant4x4Matrix (int matrix[][]){
         if(matrix.length == 4 && matrix[0].length == 4){
             int a = matrix.length;
+            int result = 0;
+            int coefficient = 1;
             int partOfMatrix[][] = new int[a-1][a-1];
-            for(int i = 1, x = 0; i < a; i++,x++){
-                for (int j = 1, y = 0; j < a; j++,y++){
-                    partOfMatrix[x][y] = matrix[i][j];
+            for(int n = 0; n < a; n++) {
+                for (int i = 0, x = 0; i < a; i++, x++) {
+                    if(i == n){
+                        x--;
+                    }else{
+                        for (int j = 1, y = 0; j < a; j++, y++) {
+                            partOfMatrix[x][y] = matrix[i][j];
+                        }
+                    }
                 }
-
+                System.out.println(coefficient*matrix[n][0] + " * ");
+                result = result + coefficient*matrix[n][0]*determinant3x3Matrix(partOfMatrix);
+                printMatrix(partOfMatrix);
+                coefficient = coefficient * (-1);
             }
-            printMatrix(partOfMatrix);
-            return 0;
+            return result;
         }
 
         return 0;
