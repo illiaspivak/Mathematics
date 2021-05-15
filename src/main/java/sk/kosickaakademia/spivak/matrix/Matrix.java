@@ -76,4 +76,21 @@ public class Matrix {
         }
         return 0;
     }
+
+    public int determinant4x4Matrix (int matrix[][]){
+        if(matrix.length == 4 && matrix[0].length == 4){
+            int a = matrix.length;
+            int partOfMatrix[][] = new int[a-1][a-1];
+            for(int i = 1, x = 0; i < a; i++,x++){
+                for (int j = 1, y = 0; j < a; j++,y++){
+                    partOfMatrix[x][y] = matrix[i][j];
+                }
+
+            }
+            printMatrix(partOfMatrix);
+            return 0;
+        }
+
+        return 0;
+    }
 }
