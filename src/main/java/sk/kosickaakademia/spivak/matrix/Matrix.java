@@ -48,4 +48,18 @@ public class Matrix {
         }
         return result;
     }
+
+    /**
+     * Determinant of 2x2 Matrix
+     * @param matrix
+     * @return int
+     */
+    public int determinant2x2Matrix (int matrix[][]){
+        if(matrix.length == 2 && matrix[0].length == 2){
+            int main = mainDiagonal(matrix);
+            int secondary = secondaryDiagonal(matrix);
+            return main - secondary;
+        }
+        return 0;
+    }
 }
