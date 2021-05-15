@@ -77,6 +77,11 @@ public class Matrix {
         return 0;
     }
 
+    /**
+     * Determinant of 4x4 Matrix
+     * @param matrix
+     * @return int
+     */
     public int determinant4x4Matrix (int matrix[][]){
         if(matrix.length == 4 && matrix[0].length == 4){
             int a = matrix.length;
@@ -96,6 +101,40 @@ public class Matrix {
                 System.out.println(coefficient*matrix[n][0] + " * ");
                 result = result + coefficient*matrix[n][0]*determinant3x3Matrix(partOfMatrix);
                 printMatrix(partOfMatrix);
+                coefficient = coefficient * (-1);
+            }
+            return result;
+        }
+
+        return 0;
+    }
+
+    /**
+     * Determinant of NxN Matrix
+     * @param matrix
+     * @return int
+     */
+    public int determinantNxNMatrix (int matrix[][]){
+        if(matrix.length == matrix[0].length){
+            int a = matrix.length;
+            int result = 0;
+            int coefficient = 1;
+            int partOfMatrix[][] = new int[a-1][a-1];
+            for(int n = 0; n < a; n++) {
+                for (int i = 0, x = 0; i < a; i++, x++) {
+                    if(i == n){
+                        x--;
+                    }else{
+                        for (int j = 1, y = 0; j < a; j++, y++) {
+                            partOfMatrix[x][y] = matrix[i][j];
+                        }
+                    }
+                }
+                if(a < 5) {
+                    result = result + coefficient * matrix[n][0] * determinant3x3Matrix(partOfMatrix);
+                }else{
+                    result = result + coefficient * matrix[n][0] * determinantNxNMatrix(partOfMatrix);
+                }
                 coefficient = coefficient * (-1);
             }
             return result;
