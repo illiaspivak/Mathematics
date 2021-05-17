@@ -186,4 +186,28 @@ public class Matrix {
         }
         return null;
     }
+
+    /**
+     * Multiplying two matrices
+     * @param matrix1
+     * @param matrix2
+     * @return matrix
+     */
+    public int[][] matrixMultiplication (int matrix1[][], int matrix2[][]){
+        if(matrix1[0].length == matrix2.length){
+            int l = matrix1.length;
+            int m = matrix1[0].length;
+            int n = matrix2[0].length;
+            int[][] matrix = new int[l][n];
+            for (int i=0; i<l; ++i) {
+                for (int j = 0; j < n; ++j) {
+                    for (int k = 0; k < m; ++k) {
+                        matrix[i][j] += matrix1[i][k] * matrix2[k][j];
+                    }
+                }
+            }
+            return matrix;
+        }
+        return null;
+    }
 }
