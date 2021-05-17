@@ -148,4 +148,23 @@ public class Matrix {
 
         return 0;
     }
+
+    /**
+     * Sum of two matrices
+     * @param matrix1
+     * @param matrix2
+     * @return matrix
+     */
+    public int[][] sumOfMatrix (int matrix1[][], int matrix2[][]){
+        if(matrix1.length == matrix2.length && matrix1[0].length == matrix2[0].length && matrix1.length == matrix1[0].length){
+            int[][] matrix = new int[matrix1.length][matrix1.length];
+            for (int i = 0; i < matrix.length; i++){
+                for (int j = 0; j < matrix.length; j++){
+                    matrix[i][j] = matrix1[i][j]+matrix2[i][j];
+                }
+            }
+            return matrix;
+        }
+        return null;
+    }
 }
