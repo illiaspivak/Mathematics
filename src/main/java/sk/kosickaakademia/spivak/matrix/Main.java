@@ -14,7 +14,7 @@ public class Main
         int[][] matrix6 = new int[][]{ {2,5,9,8,1,6},{8,9,-5,2,7,4},{1,8,7,9,2,2},{-2,4,0,7,2,2},{5,-7,3,1,6,1},{4,2,-3,4,6,0} };
 
         matrix.printMatrix(matrix6);
-        System.out.println(matrix.determinantNxNMatrix(matrix6));//-46864
+        //System.out.println(matrix.determinantNxNMatrix(matrix6));//-46864
 
 
 
