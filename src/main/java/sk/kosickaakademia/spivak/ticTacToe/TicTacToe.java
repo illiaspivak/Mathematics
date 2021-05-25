@@ -113,23 +113,9 @@ public class TicTacToe {
         System.out.println();
     }
 
-    private void printGameInt(int[][] field) {
-        for(int i=0;i< field.length;i++){
-            System.out.print("-" + "\t");
-        }
-        System.out.println();
-        for(int i=0;i< field.length;i++){
-            for(int j=0;j< field[0].length;j++){
-                System.out.print(field[i][j] + "\t");
-            }
-            System.out.println();
-        }
-        for(int i=0;i< field.length;i++){
-            System.out.print("-" + "\t");
-        }
-        System.out.println();
-    }
-
+    /**
+     * Move to the next player (game logic)
+     */
     private void nextPlayerInt() {
         if(playerInt==1)
             playerInt=2;
@@ -137,6 +123,9 @@ public class TicTacToe {
             playerInt=1;
     }
 
+    /**
+     * Move to the next player (visually)
+     */
     private void nextPlayerString() {
         if(playerString.equals("X"))
             playerString="⃝";
@@ -144,6 +133,9 @@ public class TicTacToe {
             playerString="X";
     }
 
+    /**
+     * The main method. Game Logic
+     */
     public void play(){
         System.out.println("This is a 5-in-a-row tic-tac-toe game!");
         System.out.println("Enter the size of the field:");
