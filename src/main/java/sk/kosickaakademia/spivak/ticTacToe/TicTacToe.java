@@ -3,9 +3,10 @@ package sk.kosickaakademia.spivak.ticTacToe;
 import java.util.Scanner;
 
 public class TicTacToe {
-    private int[][] pole;
-    private int player=1;
-    private int count=0;
+
+    private int playerInt = 1;
+    private String playerString = "X";
+    private int count = 0;
 
     /**
      * Determines whether one of the players on the 5-on-5 field has won
@@ -78,10 +79,24 @@ public class TicTacToe {
     }
 
     /**
+     * Filling the array with values from 1 to NxN
+     * @param field
+     */
+    private void initArrayString(String[][] field) {
+        int n = 1;
+        for(int i = 0; i < field.length; i++){
+            for(int j = 0; j < field[0].length; j++){
+                field[i][j] = String.valueOf(n);
+                n++;
+            }
+        }
+    }
+
+    /**
      * Output an array to the console
      * @param field
      */
-    private void printGame(int[][] field) {
+    private void printGame(String[][] field) {
         for(int i=0;i< field.length;i++){
             System.out.print("-" + "\t");
         }
@@ -98,13 +113,81 @@ public class TicTacToe {
         System.out.println();
     }
 
+    private void printGameInt(int[][] field) {
+        for(int i=0;i< field.length;i++){
+            System.out.print("-" + "\t");
+        }
+        System.out.println();
+        for(int i=0;i< field.length;i++){
+            for(int j=0;j< field[0].length;j++){
+                System.out.print(field[i][j] + "\t");
+            }
+            System.out.println();
+        }
+        for(int i=0;i< field.length;i++){
+            System.out.print("-" + "\t");
+        }
+        System.out.println();
+    }
+
+    private void nextPlayerInt() {
+        if(playerInt==1)
+            playerInt=2;
+        else
+            playerInt=1;
+    }
+
+    private void nextPlayerString() {
+        if(playerString.equals("X"))
+            playerString="⃝";
+        else
+            playerString="X";
+    }
+
     public void play(){
         System.out.println("This is a 5-in-a-row tic-tac-toe game!");
         System.out.println("Enter the size of the field:");
         Scanner scanner = new Scanner(System.in);
-        int n = scanner.nextInt();
-        int[][] field = new int[n][n];
-        initArray(field);
-        printGame(field);
+        int n = scanner.nextInt(); //field size
+        int[][] fieldInt = new int[n][n]; //array for game logic
+        String[][] fieldString = new String[n][n]; //array to display on the screen
+        initArray(fieldInt); //filling in the array
+        initArrayString(fieldString); //filling in the array
+        int input; //the cell selected by the player
+        while(isWinnerNxN(fieldInt)==0) {
+            System.out.println("Player's turn " + playerInt);
+            printGame(fieldString);
+            System.out.println("Enter a number from 1 to " + n*n);
+            input = scanner.nextInt();
+            if (input < 1 || input > n*n) {
+                System.out.println("Input must be between 1 and " + n*n);
+                continue;
+            }
+            int r=(input-1)/n;
+            int c=(input-1)%n;
+            if(fieldInt[r][c]!=0) {
+                System.out.println("Tile you chosed is not empty");
+                continue;
+            }
+            fieldInt[r][c]=playerInt;
+            fieldString[r][c]=playerString;
+            count++;
+            if(count == n*n){
+                break;
+            }
+            nextPlayerInt();
+            nextPlayerString();
+        }
+        if(isWinnerNxN(fieldInt)==1){
+            System.out.println("Player 1 is winner");
+            printGame(fieldString);
+        }
+        else if(isWinnerNxN(fieldInt)==2){
+            System.out.println("Player 2 is winner");
+            printGame(fieldString);
+        }else{
+            System.out.println("Standoff");
+            printGame(fieldString);
+        }
     }
 }
