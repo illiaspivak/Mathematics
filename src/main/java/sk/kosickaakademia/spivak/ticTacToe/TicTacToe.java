@@ -59,4 +59,16 @@ public class TicTacToe {
         }
         return 0;
     }
+
+    /**
+     * Filling an array with zeros
+     * @param array
+     */
+    public void initArray(int[][] array) {
+        for(int i = 0; i < array.length; i++){
+            for(int j = 0; j < array[0].length; j++){
+                array[i][j] = 0;
+            }
+        }
+    }
 }
