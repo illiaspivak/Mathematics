@@ -26,4 +26,37 @@ public class TicTacToe {
             return 2;
         return 0;
     }
+
+    /**
+     * Determines whether one of the players on the N-on-N field has won
+     * @param field
+     * @return -1   Array not of size N by N
+     *          0   No one won
+     *          1   The number one player won
+     *          2   The number two player won
+     */
+    public int isWinnerNxN(int[][] field){
+        if(field.length != field[0].length || field.length < 5){
+            return -1;
+        }
+        int n = field.length;
+        for(int i = 0; i < n-4; i++) {
+            for (int j = 0; j < n-4; j++) {
+                int[][] array = new int[5][5];
+                for (int x = 0; x < 5; x++) {
+                    for (int y = 0; y < 5; y++) {
+                        array[x][y] = field[x + i][y + j];
+                    }
+                }
+                int result = isWinner5on5(array);
+                if(result == 1){
+                    return 1;
+                }
+                if(result == 2){
+                    return 2;
+                }
+            }
+        }
+        return 0;
+    }
 }
