@@ -8,6 +8,12 @@ public class TicTacToe {
     private String playerString = "X";
     private int count = 0;
 
+    public static final String ANSI_RESET = "\u001B[0m";
+    public static final String ANSI_YELLOW = "\u001B[33m";
+    public static final String ANSI_PURPLE = "\u001B[35m";
+    public static final String ANSI_CYAN = "\u001B[36m";
+
+
     /**
      * Determines whether one of the players on the 5-on-5 field has won
      * @param field
@@ -103,7 +109,16 @@ public class TicTacToe {
         System.out.println();
         for(int i=0;i< field.length;i++){
             for(int j=0;j< field[0].length;j++){
-                System.out.print(field[i][j] + "\t");
+                if(field[i][j].equals("X")){
+                    System.out.print(ANSI_YELLOW + field[i][j] + ANSI_RESET + "\t");
+                }else
+                if(field[i][j].equals("⃝")){
+                    System.out.print(ANSI_CYAN + field[i][j] + ANSI_RESET + "\t");
+                }else{
+                    System.out.print(field[i][j] + "\t");
+                }
+
+
             }
             System.out.println();
         }
