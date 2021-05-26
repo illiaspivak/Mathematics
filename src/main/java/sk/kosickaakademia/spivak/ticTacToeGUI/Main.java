@@ -61,6 +61,8 @@ public class Main extends Application {
             border.setFill(null); //color inside the square
             border.setStroke(Color.DARKGREEN); //border color
 
+            text.setFont(Font.font(80));
+
             setAlignment(Pos.CENTER); //defines the position of the element
             getChildren().addAll(border, text); //returns a collection of elements
             // nested in the container as an object of the ObservableList<Node>interface
@@ -68,9 +70,11 @@ public class Main extends Application {
             //Clicking the left mouse button draws "X", clicking the right mouse button draws "O"
             setOnMouseClicked(event -> {
                 if(event.getButton() == MouseButton.PRIMARY){
+                    text.setFill(Color.BLUE);
                     drawX();
                 }
                 if(event.getButton() == MouseButton.SECONDARY){
+                    text.setFill(Color.PURPLE);
                     drawO();
                 }
             });
