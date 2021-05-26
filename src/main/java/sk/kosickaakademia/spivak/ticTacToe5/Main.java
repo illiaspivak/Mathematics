@@ -1,11 +1,5 @@
 package sk.kosickaakademia.spivak.ticTacToe5;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javafx.animation.KeyFrame;
-import javafx.animation.KeyValue;
-import javafx.animation.Timeline;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
@@ -14,14 +8,13 @@ import javafx.scene.input.MouseButton;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 
 public class Main extends Application {
+    Logic logic = new Logic();
 
     private boolean turnX = true; //the first player's turn, or the second player's turn
 
@@ -71,7 +64,7 @@ public class Main extends Application {
             //Clicking the left mouse button draws "X", clicking the right mouse button draws "O"
             setOnMouseClicked(event -> {
                 if(event.getButton() == MouseButton.PRIMARY){
-
+                    logic.Coordinate(event.getSceneX(),event.getSceneY());
                     if (!turnX)
                         return;
                     text.setFill(Color.BLUE);
@@ -79,7 +72,7 @@ public class Main extends Application {
                     turnX = false;
                 }
                 if(event.getButton() == MouseButton.SECONDARY){
-
+                    logic.Coordinate(event.getSceneX(),event.getSceneY());
                     if (turnX)
                         return;
                     text.setFill(Color.PURPLE);
