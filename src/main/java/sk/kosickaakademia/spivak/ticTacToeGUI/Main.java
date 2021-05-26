@@ -23,6 +23,7 @@ import javafx.util.Duration;
 
 public class Main extends Application {
 
+    private boolean turnX = true; //the first player's turn, or the second player's turn
 
     private Parent createContent() {
         Pane root = new Pane();
@@ -59,7 +60,7 @@ public class Main extends Application {
         public Tile() {
             Rectangle border = new Rectangle(200, 200); //class that helps to draw a square
             border.setFill(null); //color inside the square
-            border.setStroke(Color.DARKGREEN); //border color
+            border.setStroke(Color.LIGHTGRAY); //border color
 
             text.setFont(Font.font(80));
 
@@ -70,12 +71,18 @@ public class Main extends Application {
             //Clicking the left mouse button draws "X", clicking the right mouse button draws "O"
             setOnMouseClicked(event -> {
                 if(event.getButton() == MouseButton.PRIMARY){
+                    if (!turnX)
+                        return;
                     text.setFill(Color.BLUE);
                     drawX();
+                    turnX = false;
                 }
                 if(event.getButton() == MouseButton.SECONDARY){
+                    if (turnX)
+                        return;
                     text.setFill(Color.PURPLE);
                     drawO();
+                    turnX = true;
                 }
             });
         }
