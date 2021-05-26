@@ -28,6 +28,15 @@ public class Main extends Application {
         Pane root = new Pane();
         root.setPrefSize(600, 600);
 
+        //Dividing an empty field into squares
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                Tile tile = new Tile();
+                tile.setTranslateX(j * 200); //Translate X axis 0, 200, 400 pixel
+                tile.setTranslateY(i * 200); //Translate Y axis 0, 200, 400 pixel
+                root.getChildren().add(tile); //Gathers all the elements together
+            }
+        }
         return root;
     }
 
@@ -41,5 +50,18 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         launch(args);
+    }
+
+    private class Tile extends StackPane { //StackPane allows you to place elements on top of other elements
+
+        public Tile() {
+            Rectangle border = new Rectangle(200, 200); //class that helps to draw a square
+            border.setFill(null); //color inside the square
+            border.setStroke(Color.DARKGREEN); //border color
+
+            setAlignment(Pos.CENTER); //defines the position of the element
+            getChildren().addAll(border); //returns a collection of elements
+            // nested in the container as an object of the ObservableList<Node>interface
+        }
     }
 }
