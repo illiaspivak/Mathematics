@@ -54,14 +54,43 @@ public class Main extends Application {
 
     private class Tile extends StackPane { //StackPane allows you to place elements on top of other elements
 
+        private Text text = new Text();
+
         public Tile() {
             Rectangle border = new Rectangle(200, 200); //class that helps to draw a square
             border.setFill(null); //color inside the square
             border.setStroke(Color.DARKGREEN); //border color
 
             setAlignment(Pos.CENTER); //defines the position of the element
-            getChildren().addAll(border); //returns a collection of elements
+            getChildren().addAll(border, text); //returns a collection of elements
             // nested in the container as an object of the ObservableList<Node>interface
+
+            //Clicking the left mouse button draws "X", clicking the right mouse button draws "O"
+            setOnMouseClicked(event -> {
+                if(event.getButton() == MouseButton.PRIMARY){
+                    drawX();
+                }
+                if(event.getButton() == MouseButton.SECONDARY){
+                    drawO();
+                }
+            });
         }
+
+        /**
+         * Draws the value "X" in the square
+         */
+        private void drawX() {
+            text.setText("X");
+        }
+
+        /**
+         * Draws the value "O" in the square
+         */
+        private void drawO() {
+            text.setText("O");
+        }
+
+
     }
+
 }
