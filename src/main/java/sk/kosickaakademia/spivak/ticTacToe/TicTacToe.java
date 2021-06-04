@@ -31,7 +31,7 @@ public class TicTacToe {
         for(int i = 0; i < 5; i++){
             if(field[i][0]*field[i][1]*field[i][2]*field[i][3]*field[i][4]==1 || field[0][i]*field[1][i]*field[2][i]*field[3][i]*field[4][i]==1)
                 return 1;
-            if(field[i][0]*field[i][1]*field[i][2]*field[i][3]*field[i][4]==32 || field[0][i]*field[1][i]*field[2][i]*field[3][i]*field[4][i]==8)
+            if(field[i][0]*field[i][1]*field[i][2]*field[i][3]*field[i][4]==32 || field[0][i]*field[1][i]*field[2][i]*field[3][i]*field[4][i]==32)
                 return 2;
             if(field[i][0]*field[i][1]*field[i][2]*field[i][3]*field[i][4]==243 || field[0][i]*field[1][i]*field[2][i]*field[3][i]*field[4][i]==243)
                 return 3;

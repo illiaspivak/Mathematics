@@ -77,9 +77,9 @@ public class Main extends Application {
                     player = 2;
                     int a = play(event.getSceneX(),event.getSceneY());
                     if(a == 1)
-                        System.out.println("Player 1 is winner");
-                    if(a == 2)
                         System.out.println("Player 2 is winner");
+                    if(a == 2)
+                        System.out.println("Player 1 is winner");
                     if(a == 3)
                         System.out.println("Standoff");
                 }
@@ -91,9 +91,9 @@ public class Main extends Application {
                     player = 1;
                     int a = play(event.getSceneX(),event.getSceneY());
                     if(a == 1)
-                        System.out.println("Player 1 is winner");
-                    if(a == 2)
                         System.out.println("Player 2 is winner");
+                    if(a == 2)
+                        System.out.println("Player 1 is winner");
                     if(a == 3)
                         System.out.println("Standoff");
                 }
@@ -176,7 +176,7 @@ public class Main extends Application {
         for(int i = 0; i < 5; i++){
             if(field[i][0]*field[i][1]*field[i][2]*field[i][3]*field[i][4]==1 || field[0][i]*field[1][i]*field[2][i]*field[3][i]*field[4][i]==1)
                 return 1;
-            if(field[i][0]*field[i][1]*field[i][2]*field[i][3]*field[i][4]==32 || field[0][i]*field[1][i]*field[2][i]*field[3][i]*field[4][i]==8)
+            if(field[i][0]*field[i][1]*field[i][2]*field[i][3]*field[i][4]==32 || field[0][i]*field[1][i]*field[2][i]*field[3][i]*field[4][i]==32)
                 return 2;
         }
         if(field[0][0]*field[1][1]*field[2][2]*field[3][3]*field[4][4]==1 || field[0][4]*field[1][3]*field[2][2]*field[3][1]*field[4][0]==1)
